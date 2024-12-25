@@ -1,10 +1,13 @@
 import { Router } from 'express';
-import { renderSignUp } from '../controllers/sign-up-controller.js';
+import {
+  renderSignUp,
+  registerUser,
+} from '../controllers/sign-up-controller.js';
 
 const signupRoutes = Router();
 
 signupRoutes.get('/', renderSignUp);
-signupRoutes.post('/');
+signupRoutes.post('/', registerUser);
 
 // Exports to index.js
 export default signupRoutes;
