@@ -1,4 +1,5 @@
 import { body, matchedData, validationResult } from 'express-validator';
+import db from '../config/db/queries.js';
 
 const validateSignUpRequest = [
   // Validate first name
@@ -40,7 +41,7 @@ const validateSignUpRequest = [
 // Exported to routes/sign-up.js
 export const registerUser = [
   validateSignUpRequest,
-  async (req, res) => {
+  async (req, res, next) => {
     const errors = validationResult(req);
     if (errors.isEmpty() === false) {
       req.flash('errors', errors.array());
@@ -48,8 +49,13 @@ export const registerUser = [
       return res.redirect('sign-up');
     }
 
-    // TODO: Update database
-    res.send('Form submitted successfully');
+    const data = matchedData(req);
+    try {
+      await db.addUser(data);
+      res.redirect('/login');
+    } catch (error) {
+      return next(error);
+    }
   },
 ];
 
