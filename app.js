@@ -17,6 +17,6 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 // Routes
-app.use('/dashboard', appRoutes);
+app.use('/', appRoutes);
 
 app.listen(3000);
