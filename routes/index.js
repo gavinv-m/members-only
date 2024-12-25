@@ -6,9 +6,9 @@ import signupRoutes from './sign-up.js';
 const appRoutes = Router();
 
 appRoutes.get('/', isAuthenticated, (req, res) => {
-  res.send('Working');
+  res.send('Working'); // TODO: Render dashboard
 });
 appRoutes.use('/login', loginRoutes);
-appRoutes.use('/signup', signupRoutes);
+appRoutes.use('/sign-up', signupRoutes);
 
 export default appRoutes;

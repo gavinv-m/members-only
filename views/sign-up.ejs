@@ -1,0 +1,62 @@
+<%- include('./layout.ejs') %>
+<main>
+  <h1>Let's get you signed up!</h1>
+  <form action="" method="POST">
+    <div>
+      <label for="firstName">First Name:</label>
+      <input
+        type="text"
+        id="firstName"
+        name="firstName"
+        required
+        aria-required="true"
+      />
+    </div>
+    <div>
+      <label for="lastName">Last Name:</label>
+      <input
+        type="text"
+        id="lastName"
+        name="lastName"
+        required
+        aria-required="true"
+      />
+    </div>
+    <div>
+      <label for="username">Username:</label>
+      <input
+        type="text"
+        id="username"
+        name="username"
+        required
+        aria-required="true"
+        autocomplete="username"
+      />
+    </div>
+    <div>
+      <label for="password">Password:</label>
+      <input
+        type="password"
+        id="password"
+        name="password"
+        required
+        aria-required="true"
+        autocomplete="new-password"
+      />
+    </div>
+    <div>
+      <label for="confirmPassword">Confirm Password:</label>
+      <input
+        type="password"
+        id="confirmPassword"
+        name="confirmPassword"
+        required
+        aria-required="true"
+        autocomplete="new-password"
+      />
+    </div>
+    <div>
+      <button type="submit" aria-label="Sign up">Sign Up</button>
+    </div>
+  </form>
+</main>
