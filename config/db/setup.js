@@ -1,6 +1,7 @@
 import dotenv from 'dotenv';
 import client from './client.js';
 import pkg from 'pg';
+import { populateUsers } from '../../populate-users.js';
 import {
   createUsersTable,
   createMessagesTable,
@@ -51,10 +52,14 @@ const setupDatabase = async () => {
     await currentClient.query(createMessagesTable);
 
     console.log('Populating tables...');
-    await currentClient.query(insertUsers);
-    await currentClient.query(insertMessages);
+    const populatedUsers = await populateUsers();
 
-    console.log('Database setup completed successfully');
+    if (populatedUsers === true) {
+      await currentClient.query(insertMessages);
+      console.log('Database setup completed successfully');
+    } else {
+      console.log('Warning: Some users failed to populate');
+    }
   } catch (error) {
     console.error('Error during DB creation or population', error);
   } finally {

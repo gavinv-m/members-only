@@ -6,15 +6,27 @@ const addUser = async (data) => {
   try {
     await pool.query(
       `INSERT INTO users
-    (first_name, last_name, username, password)
-    VALUES ($1, $2, $3, $4)`,
-      [data.firstName, data.lastName, data.username, hashedPassword]
+    (first_name, last_name, username, password, is_member, is_admin)
+    VALUES ($1, $2, $3, $4, $5, $6)`,
+      [
+        data.firstName,
+        data.lastName,
+        data.username,
+        hashedPassword,
+        data.isMember || false,
+        data.isAdmin || false,
+      ]
     );
   } catch (error) {
     throw error;
   }
 };
 
-const db = { addUser };
+const getMessages = async () => {
+  const { rows } = await pool.query('SELECT * FROM messages');
+  return rows;
+};
+
+const db = { addUser, getMessages };
 
 export default db;
