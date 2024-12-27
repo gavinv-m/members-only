@@ -26,7 +26,7 @@ export const populateUsers = async () => {
       lastName: 'Johnson',
       username: 'alice_john',
       password: 'mypassword789',
-      isMember: false,
+      isMember: true,
       isAdmin: true,
     },
     {
