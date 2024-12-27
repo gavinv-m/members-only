@@ -1,8 +1,7 @@
 import db from '../config/db/queries.js ';
 
 // Exports to routes/dashboard.js
-export const renderDashboard = (req, res) => {
-  const messages = db.getMessages();
-  console.log(messages);
-  res.render('dashboard');
+export const renderDashboard = async (req, res) => {
+  const messages = await db.getMessages();
+  res.render('dashboard', { messages, user: req.user });
 };

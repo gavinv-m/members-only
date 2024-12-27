@@ -23,7 +23,11 @@ const addUser = async (data) => {
 };
 
 const getMessages = async () => {
-  const { rows } = await pool.query('SELECT * FROM messages');
+  const { rows } = await pool.query(`
+    SELECT messages.*, users.first_name, users.last_name, users.username
+    FROM messages
+    JOIN users ON messages.user_id = users.id
+  `);
   return rows;
 };
 

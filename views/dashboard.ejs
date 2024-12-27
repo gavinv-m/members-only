@@ -8,4 +8,29 @@
   <a href="/dashboard/add-message">
     <button aria-label="Add a new message">Add Message</button>
   </a>
+  <div class="messages-container">
+    <% messages.forEach((message) => { %>
+    <div class="message">
+      <div class="full-name">
+        <% if (user.is_member === false) { %>
+        <span>Anonymous</span>
+        <% } else { %>
+        <span><%= message.first_name %></span>
+        <span><%= message.last_name %></span>
+        <% } %>
+      </div>
+      <div class="username">
+        <% if (user.is_member === false) { %>
+        <span>Anonymous</span>
+        <% } else { %>
+        <span><%= message.username %></span>
+        <% } %>
+      </div>
+      <div class="message-content">
+        <p><%= message.title %></p>
+        <p><%= message.content %></p>
+      </div>
+    </div>
+    <% }) %>
+  </div>
 </main>
