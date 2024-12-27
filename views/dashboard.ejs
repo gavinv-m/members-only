@@ -2,5 +2,10 @@
 <%- include ('./layout.ejs') %>
 <!-- TODO: Add header -->
 <main>
-  <a href="/dashboard/add-message"><button>Add Message</button></a>
+  <form action="/logout" method="POST" aria-label="Logout">
+    <button type="submit" aria-label="Logout">Logout</button>
+  </form>
+  <a href="/dashboard/add-message">
+    <button aria-label="Add a new message">Add Message</button>
+  </a>
 </main>
