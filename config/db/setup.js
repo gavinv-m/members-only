@@ -1,7 +1,12 @@
 import dotenv from 'dotenv';
 import client from './client.js';
 import pkg from 'pg';
-import { createUsersTable, createMessagesTable } from './schema.js';
+import {
+  createUsersTable,
+  createMessagesTable,
+  insertUsers,
+  insertMessages,
+} from './schema.js';
 
 dotenv.config();
 
@@ -44,6 +49,10 @@ const setupDatabase = async () => {
     console.log('Creating tables...');
     await currentClient.query(createUsersTable);
     await currentClient.query(createMessagesTable);
+
+    console.log('Populating tables...');
+    await currentClient.query(insertUsers);
+    await currentClient.query(insertMessages);
 
     console.log('Database setup completed successfully');
   } catch (error) {
