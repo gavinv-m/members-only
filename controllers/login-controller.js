@@ -6,25 +6,26 @@ const validateLogInRequest = [
   body('password').notEmpty().withMessage('Password is required'),
 ];
 
-// Exports to login.js
 export const signInUser = [
   validateLogInRequest,
-  (req, res) => {
+  (req, res, next) => {
     const errors = validationResult(req);
     if (errors.isEmpty() === false) {
       req.flash('errors', errors.array());
       return res.redirect('/login');
     }
 
-    passport.authenticate('local', {
+    // Execute the passport authentication
+    return passport.authenticate('local', {
       failureRedirect: '/login',
+      failureFlash: true,
       successRedirect: '/',
-    });
+    })(req, res, next);
   },
 ];
 
 // Exported to login.js
 export const renderLogin = (req, res) => {
-  const errors = req.flash('errors');
+  const errors = req.flash('error');
   res.render('login', { errors });
 };
