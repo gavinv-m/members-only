@@ -4,6 +4,7 @@ import loginRoutes from './login.js';
 import logoutRoute from './logout.js';
 import signupRoutes from './sign-up.js';
 import dashboardRoutes from './dashboard.js';
+import memberRoute from './become-member.js';
 
 const appRoutes = Router();
 
@@ -14,5 +15,6 @@ appRoutes.use('/login', loginRoutes);
 appRoutes.use('/logout', logoutRoute);
 appRoutes.use('/sign-up', signupRoutes);
 appRoutes.use('/dashboard', dashboardRoutes);
+appRoutes.use('/become-member', memberRoute);
 
 export default appRoutes;

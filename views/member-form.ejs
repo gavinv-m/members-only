@@ -1,0 +1,17 @@
+<!-- Rendered by member-controller -->
+<%- include('./layout.ejs') %>
+<main>
+  <h1>Become a member!</h1>
+  <form action="/become-member" method="POST">
+    <input
+      type="text"
+      name="member-password"
+      id="member-password"
+      placeholder="Enter your password"
+      required
+      aria-label="Password"
+    />
+    <button type="submit" aria-label="Submit button">Become a member</button>
+    <p class="response"></p>
+  </form>
+</main>
