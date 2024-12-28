@@ -1,4 +1,4 @@
-import db from './config/db/queries.js';
+import db from './queries.js';
 
 export const populateUsers = async () => {
   let success = true;

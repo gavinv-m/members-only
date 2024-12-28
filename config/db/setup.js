@@ -1,11 +1,10 @@
 import dotenv from 'dotenv';
 import client from './client.js';
 import pkg from 'pg';
-import { populateUsers } from '../../populate-users.js';
+import { populateUsers } from './populate-users.js';
 import {
   createUsersTable,
   createMessagesTable,
-  insertUsers,
   insertMessages,
 } from './schema.js';
 
