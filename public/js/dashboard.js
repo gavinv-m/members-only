@@ -3,10 +3,19 @@ const showDialog = () => {
   dialog.showModal();
 };
 
+const clearFields = () => {
+  const errorMessage = document.getElementById('error-message');
+  const messageTitle = document.getElementById('title');
+  const messageContent = document.getElementById('content');
+
+  errorMessage.value = '';
+  messageTitle.value = '';
+  messageContent.value = '';
+};
+
 const closeDialog = () => {
   const dialog = document.getElementById('add-message-dialog');
-  const errorMessage = document.getElementById('error-message');
-  errorMessage.textContent = '';
+  clearFields();
   dialog.close();
 };
 
@@ -28,7 +37,7 @@ const submitForm = async (event) => {
       body: JSON.stringify(data),
     });
     if (response.ok) {
-      closeDialog();
+      clearFields();
     } else {
       errorMessage.textContent = 'Failed to submit message';
     }
