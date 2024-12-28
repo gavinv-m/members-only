@@ -25,7 +25,12 @@ app.use(flash());
 // Routes
 app.use('/', appRoutes);
 
-// TODO: Render error view
+// TODO: Remove
+// Test error
+app.get('/test-error', (req, res) => {
+  throw new Error('Test error');
+});
+
 app.use((err, req, res, next) => {
   console.error(err.stack);
   res.status(500).render('error', { message: 'Something went wrong!' });
