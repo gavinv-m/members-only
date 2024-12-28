@@ -1,13 +1,14 @@
 <!-- Rendered by dashboard-controller -->
 <%- include ('./layout.ejs') %>
+<script src="../public/js/dashboard.js" type="module" defer></script>
 <!-- TODO: Add header -->
 <main>
   <form action="/logout" method="POST" aria-label="Logout">
     <button type="submit" aria-label="Logout">Logout</button>
   </form>
-  <a href="/dashboard/add-message">
-    <button aria-label="Add a new message">Add Message</button>
-  </a>
+  <button id="add-message-btn" aria-label="Add a new message">
+    Add Message
+  </button>
   <div class="messages-container">
     <% messages.forEach((message) => { %>
     <div class="message">
@@ -33,4 +34,38 @@
     </div>
     <% }) %>
   </div>
+  <dialog id="add-message-dialog">
+    <form id="add-message-form">
+      <!-- Title Input -->
+      <input
+        type="text"
+        id="title"
+        name="title"
+        required
+        maxlength="100"
+        aria-label="Message title"
+        placeholder="Enter message title"
+      />
+
+      <!-- Content Input -->
+      <textarea
+        id="content"
+        name="content"
+        rows="4"
+        required
+        aria-label="Message content"
+        placeholder="Enter message content"
+        maxlength="140"
+      ></textarea>
+
+      <!-- Form Buttons -->
+      <div>
+        <button type="submit" id="submit-btn">Submit</button>
+        <button type="button" id="cancel-btn" aria-label="Cancel">
+          Cancel
+        </button>
+      </div>
+    </form>
+    <p id="error-message"></p>
+  </dialog>
 </main>

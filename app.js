@@ -6,7 +6,9 @@ import appRoutes from './routes/index.js';
 import flash from 'connect-flash';
 
 const app = express();
-app.use(express.urlencoded({ extended: true })); // Parsing forms
+app.use(express.json()); // Parse JSON payloads
+app.use(express.urlencoded({ extended: true })); // Parse URL-encoded bodies (form submissions)
+app.use('/public', express.static('public'));
 app.set('views', path.join(process.cwd(), 'views'));
 app.set('view engine', 'ejs');
 
