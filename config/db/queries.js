@@ -22,6 +22,18 @@ const addUser = async (data) => {
   }
 };
 
+const addMessage = async (user, message) => {
+  try {
+    await pool.query(
+      `INSERT INTO messages (title, content, user_id)
+      VALUES ($1, $2, $3)`,
+      [message.title, message.content, user.id]
+    );
+  } catch (error) {
+    throw error;
+  }
+};
+
 const getMessages = async () => {
   const { rows } = await pool.query(`
     SELECT messages.*, users.first_name, users.last_name, users.username
@@ -31,6 +43,6 @@ const getMessages = async () => {
   return rows;
 };
 
-const db = { addUser, getMessages };
+const db = { addMessage, addUser, getMessages };
 
 export default db;

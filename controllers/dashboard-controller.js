@@ -18,7 +18,7 @@ const validateMessage = [
 
 export const addMessage = [
   validateMessage,
-  (req, res, next) => {
+  async (req, res, next) => {
     const errors = validationResult(req);
     if (errors.isEmpty() === false) {
       return res.status(400).json({
@@ -27,8 +27,14 @@ export const addMessage = [
       });
     }
     const data = matchedData(req);
-    console.log(data.title, data.content);
-    console.log(req.user);
+    try {
+      await db.addMessage(req.user, data);
+      res.status(201).json({
+        message: 'Message added successfully',
+      });
+    } catch (error) {
+      next(error);
+    }
   },
 ];
 
