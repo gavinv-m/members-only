@@ -74,14 +74,14 @@ const modifyRole = async (user, password, role) => {
   if (isMatch === false) {
     return success;
   }
-  const column = role === 'member' ? 'is_member' : 'is_admin';
   await pool.query(
     `
     UPDATE users
-    SET ${column} = $1
+    SET is_member = true,
+       is_admin = CASE WHEN $1 = 'admin' THEN true ELSE is_admin END
     WHERE username = $2
     `,
-    [true, user.username]
+    [role, user.username]
   );
 
   success = true;
