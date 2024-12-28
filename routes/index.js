@@ -6,6 +6,7 @@ import signupRoutes from './sign-up.js';
 import dashboardRoutes from './dashboard.js';
 import memberRoute from './become-member.js';
 import adminRoute from './become-admin.js';
+import deleteMessageRoute from './delete-message.js';
 
 const appRoutes = Router();
 
@@ -18,5 +19,6 @@ appRoutes.use('/sign-up', signupRoutes);
 appRoutes.use('/dashboard', dashboardRoutes);
 appRoutes.use('/become-member', memberRoute);
 appRoutes.use('/become-admin', adminRoute);
+appRoutes.use('/delete-message', deleteMessageRoute);
 
 export default appRoutes;

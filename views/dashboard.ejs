@@ -1,6 +1,7 @@
 <!-- Rendered by dashboard-controller -->
 <%- include ('./layout.ejs') %>
 <script src="../public/js/dashboard.js" type="module" defer></script>
+<script src="../public/js/delete-message.js" type="module" defer></script>
 <!-- TODO: Add header -->
 <% if (user.is_member === false) { %>
 <a href="/become-member">Become a member</a>
@@ -36,6 +37,13 @@
         <p><%= message.title %></p>
         <p><%= message.content %></p>
       </div>
+      <% if (user.is_admin === true) { %>
+      <div class="delete-container">
+        <button class="delete-message" id="<%= message.id %>">
+          Delete Message
+        </button>
+      </div>
+      <% } %>
     </div>
     <% }) %>
   </div>

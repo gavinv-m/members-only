@@ -49,6 +49,19 @@ const addMessage = async (user, message) => {
   }
 };
 
+const deleteMessage = async (messageID) => {
+  try {
+    await pool.query(
+      `
+      DELETE FROM messages
+      WHERE id = $1`,
+      [messageID]
+    );
+  } catch (error) {
+    throw error;
+  }
+};
+
 const getMessages = async () => {
   const { rows } = await pool.query(`
     SELECT messages.*, users.first_name, users.last_name, users.username
@@ -88,6 +101,13 @@ const modifyRole = async (user, password, role) => {
   return success;
 };
 
-const db = { addMessage, addRole, addUser, getMessages, modifyRole };
+const db = {
+  addMessage,
+  addRole,
+  addUser,
+  deleteMessage,
+  getMessages,
+  modifyRole,
+};
 
 export default db;
