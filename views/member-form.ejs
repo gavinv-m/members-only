@@ -12,6 +12,8 @@
       aria-label="Password"
     />
     <button type="submit" aria-label="Submit button">Become a member</button>
-    <p class="response"></p>
+    <% if (responses) { %> <% responses.forEach((response) => { %>
+    <p><%= response.msg %></p>
+    <% }) %> <% } %>
   </form>
 </main>

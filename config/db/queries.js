@@ -58,6 +58,36 @@ const getMessages = async () => {
   return rows;
 };
 
-const db = { addMessage, addRole, addUser, getMessages };
+const modifyRole = async (user, password, role) => {
+  const { rows } = await pool.query(
+    `
+    SELECT hashed_password
+    FROM role_passwords
+    WHERE role = $1`,
+    [role]
+  );
+  const rolePassword = rows[0]['hashed_password'];
+
+  let success = false;
+  const isMatch = await bcrypt.compare(password, rolePassword);
+
+  if (isMatch === false) {
+    return success;
+  }
+  const column = role === 'member' ? 'is_member' : 'is_admin';
+  await pool.query(
+    `
+    UPDATE users
+    SET ${column} = $1
+    WHERE username = $2
+    `,
+    [true, user.username]
+  );
+
+  success = true;
+  return success;
+};
+
+const db = { addMessage, addRole, addUser, getMessages, modifyRole };
 
 export default db;
