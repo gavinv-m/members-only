@@ -1,0 +1,19 @@
+<!-- Rendered by admin-controller -->
+<%- include('./layout.ejs') %>
+<main>
+  <h1>Become an admin!</h1>
+  <form action="/become-admin" method="POST">
+    <input
+      type="text"
+      name="admin-password"
+      id="admin-password"
+      placeholder="Enter admin password"
+      required
+      aria-label="Password"
+    />
+    <button type="submit" aria-label="Submit button">Become an admin</button>
+    <% if (responses) { %> <% responses.forEach((response) => { %>
+    <p><%= response.msg %></p>
+    <% }) %> <% } %>
+  </form>
+</main>
