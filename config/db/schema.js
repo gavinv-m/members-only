@@ -38,3 +38,13 @@ VALUES
 ('Admin Announcement', 'We are improving our features.', 3),
 ('Feedback', 'Great platform, keep up the good work!', 4);
 `;
+
+export const createRoles = `
+CREATE TABLE role_passwords (
+    id SERIAL PRIMARY KEY,
+    role VARCHAR(50) UNIQUE NOT NULL,
+    hashed_password VARCHAR(255) NOT NULL,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+`;

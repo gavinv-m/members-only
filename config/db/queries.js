@@ -1,6 +1,21 @@
 import pool from './pool.js';
 import bcrypt from 'bcryptjs';
 
+const addRole = async (role) => {
+  const hashedPassword = await bcrypt.hash(role.password, 10);
+  try {
+    await pool.query(
+      `
+      INSERT INTO role_passwords
+      (role, hashed_password)
+      VALUES ($1, $2)`,
+      [role.role, hashedPassword]
+    );
+  } catch (error) {
+    throw error;
+  }
+};
+
 const addUser = async (data) => {
   const hashedPassword = await bcrypt.hash(data.password, 10);
   try {
@@ -43,6 +58,6 @@ const getMessages = async () => {
   return rows;
 };
 
-const db = { addMessage, addUser, getMessages };
+const db = { addMessage, addRole, addUser, getMessages };
 
 export default db;
