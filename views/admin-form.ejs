@@ -1,8 +1,15 @@
 <!-- Rendered by admin-controller -->
 <%- include('./layout.ejs') %>
+<link rel="stylesheet" href="../public/styles/admin-form.css" />
+<header>
+  <h1><a href="/">Dashboard</a></h1>
+  <form action="/logout" method="POST" aria-label="Logout">
+    <button type="submit" aria-label="Logout">Logout</button>
+  </form>
+</header>
 <main>
   <h1>Become an admin!</h1>
-  <form action="/become-admin" method="POST">
+  <form action="/become-admin" method="POST" id="admin-form">
     <input
       type="text"
       name="admin-password"
@@ -11,9 +18,11 @@
       required
       aria-label="Password"
     />
-    <button type="submit" aria-label="Submit button">Become an admin</button>
+    <button type="submit" aria-label="Submit button" id="submit-btn">
+      Become an admin
+    </button>
     <% if (responses) { %> <% responses.forEach((response) => { %>
-    <p><%= response.msg %></p>
+    <p class="response"><%= response.msg %></p>
     <% }) %> <% } %>
   </form>
 </main>
