@@ -1,8 +1,15 @@
 <!-- Rendered by member-controller -->
 <%- include('./layout.ejs') %>
+<link rel="stylesheet" href="../public/styles/member-form.css" />
+<header>
+  <h1><a href="/">Dashboard</a></h1>
+  <form action="/logout" method="POST" aria-label="Logout">
+    <button type="submit" aria-label="Logout">Logout</button>
+  </form>
+</header>
 <main>
   <h1>Become a member!</h1>
-  <form action="/become-member" method="POST">
+  <form action="/become-member" method="POST" id="member-form">
     <input
       type="text"
       name="member-password"
@@ -11,9 +18,11 @@
       required
       aria-label="Password"
     />
-    <button type="submit" aria-label="Submit button">Become a member</button>
+    <button type="submit" aria-label="Submit button" id="submit-btn">
+      Become a member
+    </button>
     <% if (responses) { %> <% responses.forEach((response) => { %>
-    <p><%= response.msg %></p>
+    <p class="response"><%= response.msg %></p>
     <% }) %> <% } %>
   </form>
 </main>
