@@ -47,7 +47,8 @@ form {
 }
 
 form > div {
-  width: 75%;
+  max-width: 500px;
+  width: 100%;
 
   /* Descendants: */
   display: flex;
