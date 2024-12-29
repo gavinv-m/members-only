@@ -4,13 +4,18 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "start": "node app.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
+  "engines": {
+    "node": "18.x"
+  },
   "type": "module",
   "dependencies": {
+    "@railway/cli": "^3.20.0",
     "bcryptjs": "^2.4.3",
     "connect-flash": "^0.1.1",
     "connect-pg-simple": "^10.0.0",
