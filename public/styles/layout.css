@@ -15,3 +15,7 @@ body {
   display: grid;
   grid-template-rows: 10fr 90fr;
 }
+
+header {
+  min-height: 80px;
+}

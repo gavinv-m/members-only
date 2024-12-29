@@ -1,0 +1,181 @@
+header {
+  box-shadow: 1px 2px 10px #f2e8dc;
+  padding: 0px 25px;
+}
+
+header,
+.user-actions {
+  align-items: center;
+  display: flex;
+  justify-content: space-between;
+}
+
+.user-actions {
+  gap: 25px;
+}
+
+header > h1 {
+  color: #4648aa;
+}
+
+header a {
+  color: #4648aa;
+  cursor: pointer;
+  font-size: 17px;
+  text-decoration: none;
+}
+
+#logout-btn {
+  background-color: white;
+  border: none;
+  color: #4648aa;
+  cursor: pointer;
+  font-size: 15px;
+}
+
+main {
+  background-color: #f3f4f5;
+
+  /* Descendants: */
+  display: flex;
+  flex-direction: column;
+  gap: 35px;
+}
+
+#add-message-btn {
+  background-color: #4648aa;
+  border: none;
+  border-radius: 8px;
+  color: white;
+  cursor: pointer;
+  font-size: 16px;
+  height: 50px;
+  margin-top: 35px;
+  width: 175px;
+
+  /* Positioning: */
+  align-self: center;
+}
+
+.messages-container {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.message {
+  background-color: white;
+  border-radius: 8px;
+  padding: 25px;
+  width: 85%;
+}
+
+.message:last-child {
+  margin-bottom: 50px;
+}
+
+.full-name {
+  color: #4648aa;
+  font-size: 17px;
+}
+
+.username span {
+  color: gray;
+}
+
+.message-content {
+  margin-top: 15px;
+
+  /* Descendants: */
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+}
+
+.message-title {
+  font-weight: bolder;
+}
+
+.delete-container {
+  margin-top: 9px;
+
+  /* Descendants */
+  display: flex;
+  justify-content: flex-end;
+}
+
+.delete-message {
+  background-color: white;
+  border: none;
+  color: red;
+  cursor: pointer;
+}
+
+dialog.open,
+dialog > form {
+  display: flex;
+  flex-direction: column;
+}
+
+dialog {
+  border: none;
+  border-radius: 8px;
+  max-width: 500px;
+  padding: 25px;
+  width: 50%;
+
+  /* Positioning: */
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+dialog > form {
+  width: 100%;
+
+  /* Descendants: */
+  gap: 35px;
+}
+
+dialog input,
+dialog textarea {
+  border: 2px solid #d3d3d3;
+  border-radius: 8px;
+  padding-left: 15px;
+}
+
+dialog input {
+  height: 50px;
+}
+
+textarea {
+  height: 175px;
+  padding-top: 15px;
+  resize: none;
+}
+
+.form-btns {
+  display: flex;
+  gap: 15px;
+  justify-content: flex-end;
+}
+
+.form-btns button {
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  height: 35px;
+  width: 75px;
+}
+
+.form-btns button:first-child {
+  background-color: #4648aa;
+  color: white;
+}
+
+.form-btns button:last-child:hover {
+  background-color: red;
+  color: white;
+}

@@ -2,16 +2,21 @@
 <%- include ('./layout.ejs') %>
 <script src="../public/js/dashboard.js" type="module" defer></script>
 <script src="../public/js/delete-message.js" type="module" defer></script>
-<!-- TODO: Add header -->
-<% if (user.is_member === false) { %>
-<a href="/become-member">Become a member</a>
-<% } %> <% if (user.is_admin === false) { %>
-<a href="/become-admin">Become an admin</a>
-<% } %>
+<link rel="stylesheet" href="../public/styles/dashboard.css" />
+<header>
+  <h1>ClubHouse</h1>
+  <div class="user-actions">
+    <% if (user.is_member === false) { %>
+    <a href="/become-member">Become a member</a>
+    <% } %> <% if (user.is_admin === false) { %>
+    <a href="/become-admin">Become an admin</a>
+    <% } %>
+    <form action="/logout" method="POST" aria-label="Logout">
+      <button type="submit" aria-label="Logout" id="logout-btn">Logout</button>
+    </form>
+  </div>
+</header>
 <main>
-  <form action="/logout" method="POST" aria-label="Logout">
-    <button type="submit" aria-label="Logout">Logout</button>
-  </form>
   <button id="add-message-btn" aria-label="Add a new message">
     Add Message
   </button>
@@ -28,13 +33,13 @@
       </div>
       <div class="username">
         <% if (user.is_member === false) { %>
-        <span>Anonymous</span>
+        <span>@anon</span>
         <% } else { %>
-        <span><%= message.username %></span>
+        <span>@<%= message.username %></span>
         <% } %>
       </div>
       <div class="message-content">
-        <p><%= message.title %></p>
+        <p class="message-title"><%= message.title %></p>
         <p><%= message.content %></p>
       </div>
       <% if (user.is_admin === true) { %>
@@ -72,7 +77,7 @@
       ></textarea>
 
       <!-- Form Buttons -->
-      <div>
+      <div class="form-btns">
         <button type="submit" id="submit-btn">Submit</button>
         <button type="button" id="cancel-btn" aria-label="Cancel">
           Cancel
